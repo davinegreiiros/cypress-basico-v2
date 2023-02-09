@@ -74,6 +74,21 @@ describe('Central de Atendimento ao Cliente TAT', function () {
    //mudar o comportamento de  cy.get('button[type="submit"]').click() para cy.contains('button', 'Enviar').click()
    
 
+   //lesson 03 - Exercicio 
+   it.only('Seleciona um produto YOUTUBE por seu texto', function (){
+    cy.get('select').select('YouTube').should('have.value', 'youtube');
+   })
+
+   //Exercicio extra 01
+   it.only('Seleciona um produto MENTORIA por seu texto', function (){
+    cy.get('select').select('Mentoria').should('have.value', 'mentoria');
+   })
+
+   //Exercicio extra 02
+   it.only('Seleciona um produto BLOG por seu texto', function (){
+    cy.get('select').select('Blog').should('have.value', 'blog');
+   })
+
 
 
 })
