@@ -89,6 +89,17 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     cy.get('select').select('Blog').should('have.value', 'blog');
    })
 
+   //Aula 04 - Inputs tipo RADIO | exercicio 
+   it.only('Marca o tipo de atendimento "Feedback"', function (){
+    cy.get('input[type="radio"]').last().check();
+   })
+
+   //Exercicio extra
+   it.only('Marca cada tipo de atendimento', function (){
+    cy.get('input[type="radio"]').each(() => {'Ajuda','Elogio','Feedback'})
+   })
+
+
 
 
 })
