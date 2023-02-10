@@ -8,7 +8,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
         cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT')
     })
 
-    it.only('Preenche os campos obrigatórios e envia o formulário', function () {
+    it('Preenche os campos obrigatórios e envia o formulário', function () {
         const longText = 'Teste teste teste testes teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste'
         
         cy.get('#firstName').type('Davi')
@@ -22,7 +22,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
         cy.get('.success').should('be.visible')
     })
 
-    it.only('Exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', function () {
+    it('Exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', function () {
         cy.get('#firstName').type('Davi')
         cy.get('#lastName').type('Negreiros')
         cy.get('#email').type('davi.negreiiros36@gmail,com')
@@ -33,17 +33,17 @@ describe('Central de Atendimento ao Cliente TAT', function () {
         cy.get('.error').should('be.visible')
     })
 
-    it.only('Campo telefone continua vazio quando preenchido com valor não-númericos', function () {
+    it('Campo telefone continua vazio quando preenchido com valor não-númericos', function () {
         cy.get('#phone')
         .type('abcdefghij')
         .should('have.value', '')
     })
     //exercicio 04
-    it.only('Exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function () {
+    it('Exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function () {
         cy.get('#firstName').type('Davi')
         cy.get('#lastName').type('Negreiros')
         cy.get('#email').type('davi.negreiiros36@gmail.com')
-        cy.get('#phone-checkbox').click()
+        cy.get('#phone-checkbox').check()
         cy.get('#open-text-area').type('Teste')
         cy.contains('button', 'Enviar').click()
 
@@ -51,7 +51,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     })
 
     //exercicio 05
-    it.only('Preenche e limpa os campos nome, sobrenome, email e telefone ', function () {
+    it('Preenche e limpa os campos nome, sobrenome, email e telefone ', function () {
         cy.get('#firstName').type('Davi').should('have.value', 'Davi').clear().should('have.value', '');
         cy.get('#lastName').type('Negreiros').should('have.value', 'Negreiros').clear().should('have.value', '');
         cy.get('#email').type('davi.negreiiros36@gmail.com').should('have.value', 'davi.negreiiros36@gmail.com').clear().should('have.value', '');
@@ -59,13 +59,13 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     })
 
     //exercicio 06
-    it.only('Exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function () {
+    it('Exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function () {
         cy.contains('button', 'Enviar').click()
         cy.get('.error').should('be.visible')
     })
 
     //exercicio 07
-    it.only('Envia o formuário com sucesso usando um comando customizado', function() {
+    it('Envia o formuário com sucesso usando um comando customizado', function() {
         cy.fillMandatoryFieldsAndSubmit()
         cy.get('.success').should('be.visible')
     })
@@ -75,30 +75,43 @@ describe('Central de Atendimento ao Cliente TAT', function () {
    
 
    //lesson 03 - Exercicio 
-   it.only('Seleciona um produto YOUTUBE por seu texto', function (){
+   it('Seleciona um produto YOUTUBE por seu texto', function (){
     cy.get('select').select('YouTube').should('have.value', 'youtube');
    })
 
    //Exercicio extra 01
-   it.only('Seleciona um produto MENTORIA por seu texto', function (){
+   it('Seleciona um produto MENTORIA por seu texto', function (){
     cy.get('select').select('Mentoria').should('have.value', 'mentoria');
    })
 
    //Exercicio extra 02
-   it.only('Seleciona um produto BLOG por seu texto', function (){
+   it('Seleciona um produto BLOG por seu texto', function (){
     cy.get('select').select('Blog').should('have.value', 'blog');
    })
 
    //Aula 04 - Inputs tipo RADIO | exercicio 
-   it.only('Marca o tipo de atendimento "Feedback"', function (){
+   it('Marca o tipo de atendimento "Feedback"', function (){
     cy.get('input[type="radio"]').last().check();
    })
 
    //Exercicio extra
-   it.only('Marca cada tipo de atendimento', function (){
-    cy.get('input[type="radio"]').each(() => {'Ajuda','Elogio','Feedback'})
+   it('Marca cada tipo de atendimento', function (){
+    cy.get('input[type="radio"]')
+    .should('have.length', 3)  
+    .each(function($radio){
+    cy.wrap($radio).check();
+    cy.wrap($radio).should('be.checked')
+    })
    })
 
+   //aula 05 - checkbox | exercicio
+   it('Marca ambos checkboxes, depois desmarca o último', function() {
+    cy.get('input[type="checkbox"]')
+    .check()
+    .last()
+    .uncheck()
+    .should('not.be.checked');
+   })
 
 
 
