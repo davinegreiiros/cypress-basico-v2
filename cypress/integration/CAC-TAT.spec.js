@@ -113,4 +113,24 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     .should('not.be.checked');
    })
 
+   //aula 06 | exercicio
+   it.only('Seleciona um arquivo da pasta fixtures', function(){
+    cy.get('input[type="file"]')
+    .should('not.have.value')
+    .selectFile('./cypress/fixtures/example.json')
+    .should( function($input){
+        expect($input[0].files[0].name).to.equal('example.json')
+    });
+
+    //exercicio extra 1
+    it.only('', function(){
+    cy.get('input[type="file"]')
+    .should('not.have.value')
+    .selectFile('./cypress/fixtures/example.json', {action:"drag-drop"})
+    .should( function($input){
+        expect($input[0].files[0].name).to.equal('example.json')
+     });
+    })
+   })
+
 })
