@@ -114,7 +114,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
    })
 
    //aula 06 | exercicio
-   it.only('Seleciona um arquivo da pasta fixtures', function(){
+   it('Seleciona um arquivo da pasta fixtures', function(){
     cy.get('input[type="file"]')
     .should('not.have.value')
     .selectFile('./cypress/fixtures/example.json')
@@ -123,7 +123,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     });
 
     //exercicio extra 1
-    it.only('', function(){
+    it('', function(){
     cy.get('input[type="file"]')
     .should('not.have.value')
     .selectFile('./cypress/fixtures/example.json', {action:"drag-drop"})
