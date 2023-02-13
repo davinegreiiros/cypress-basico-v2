@@ -104,7 +104,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     })
    })
 
-   //aula 05 - checkbox | exercicio |
+   //aula 05 - checkbox | exercicio
     it('Marca ambos checkboxes, depois desmarca o último', function() {
     cy.get('input[type="checkbox"]')
     .check()
