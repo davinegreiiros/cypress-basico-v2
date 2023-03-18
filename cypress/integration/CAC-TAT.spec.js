@@ -158,7 +158,6 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     })
 
 
-    //aula 8 - exercicio
-    it
- 
+    //aula 8 - exercicio - ajustar o view para mobile
+    
 })
