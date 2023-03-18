@@ -157,9 +157,8 @@ describe('Central de Atendimento ao Cliente TAT', function () {
         cy.contains('Talking About Testing').should('be.visible');
     })
 
-    //exercicio extra - DESAFIO
-    it.only('Testa a página da política de privacidade de forma independente', function(){
-     cy.get('#privacy a')
-     
-    })
+
+    //aula 8 - exercicio
+    it
+ 
 })
