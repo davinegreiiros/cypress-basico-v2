@@ -175,7 +175,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
     })
 
       //exercicio extra 1
-      it('Acessa a página da política de privacidade removendo o target e então clicando no lin', function (){
+    it('Acessa a página da política de privacidade removendo o target e então clicando no lin', function (){
         cy.get('#privacy a')
         .invoke('removeAttr', 'target')
         .click();
@@ -183,4 +183,14 @@ describe('Central de Atendimento ao Cliente TAT', function () {
         cy.contains('Talking About Testing').should('be.visible');
     })
     //aula 8 - exercicio - ajustar o view para mobile
+    
+    it('Faz uma requisicao HTTP', function() {
+        cy.request('https://cac-tat.s3.eu-central-1.amazonaws.com/index.html')
+        .should(function(response){
+            const {status, statusText, body} = response
+            expect(status).to.equal(200);
+            expect(statusText).to.equal('OK');
+            expect(body).to.include('CAC TAT')
+        })
+    })
 })
